@@ -26,7 +26,7 @@ resource "aws_batch_compute_environment" "batch-compute-environment" {
     type                        = "MANAGED"
     # add compute_resources
     compute_resources {
-        instance_type = [ "g4dn.4xlarge", "g4dn.8xlarge" ]
+        instance_type = [ "g4dn.4xlarge", "g4dn.8xlarge", "g5.4xlarge", "g5.8xlarge", "g6.4xlarge", "g6.8xlarge" ]
         subnets = [ for s in aws_subnet.worker-subnets: s.id ]
         type = "SPOT"
         max_vcpus = 128
@@ -38,7 +38,7 @@ resource "aws_batch_compute_environment" "batch-compute-environment" {
         launch_template {
             launch_template_id = aws_launch_template.launch_template.id
         }
-        ec2_key_pair = "grid-dev-us-west-2"
+        ec2_key_pair = "webodm"
         bid_percentage = 100
         image_id = jsondecode(data.aws_ssm_parameter.ami.value).image_id
         spot_iam_fleet_role = aws_iam_role.batch-spot-fleet-role.arn

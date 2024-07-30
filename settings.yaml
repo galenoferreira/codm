@@ -13,5 +13,4 @@ min_num_features: 16000
 opensfm_processes: 8
 pc_tile: True
 notifications:
-  - 'howard@hobu.co'
-
+  - 'aws@geonnex.com.br'

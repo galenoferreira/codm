@@ -31,6 +31,7 @@ execution script.
 * NodeJS
 * Terraform
 * AWS CLI
+* IAM user with appropriated permitions on AWS
 
 
 ### Install Prerequisites
@@ -46,8 +47,8 @@ in the conda environment directly so they are not forgotten on any subsequent
 runs. After setting the variables, make sure to cycle the environment so the
 variables stick:
 
-    conda env config vars set AWS_ACCESS_KEY_ID=AKIAJUNKSERROREMFEOI
-    conda env config vars set AWS_SECRET_ACCESS_KEY=4lztL8mlqtxqmzEMPJjsoLygFcGCAPPfFKEvK+3k
+    conda env config vars set AWS_ACCESS_KEY_ID=[your access id]
+    conda env config vars set AWS_SECRET_ACCESS_KEY=[your secret key]
     conda env config vars set AWS_DEFAULT_REGION=us-west-2
     conda env deactivate
     conda activate codm
@@ -69,6 +70,7 @@ variables stick:
 
 2. Execute Terraform environment
 
+        terraform init // run once
         terraform apply
 
 
@@ -130,5 +132,3 @@ collections, which otherwise might not match or converge.
 ## Resources
 
 Azavea has excellent CF templates for GPU Batch at https://github.com/azavea/raster-vision-aws/blob/master/cloudformation/template.yml
-
-
