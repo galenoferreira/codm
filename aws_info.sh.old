@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Função para checar se a AWS CLI está instalada
+check_aws_cli() {
+    if ! command -v aws &> /dev/null; then
+        echo "AWS CLI não está instalada. Por favor, instale a AWS CLI e configure as credenciais."
+        exit 1
+    fi
+}
+
+# Função para obter a quantidade de instâncias EC2 rodando
+get_ec2_instances() {
+    echo "Quantidade de instâncias EC2 rodando:"
+    aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].[InstanceId]" --output text | wc -l
+}
+
+# Função para obter a quantidade de pastas no diretório raiz do S3
+get_s3_buckets() {
+    echo "Quantidade de buckets no S3:"
+    aws s3 ls | wc -l
+}
+
+# Função para obter a quantidade de jobs rodando no Batch
+get_batch_jobs() {
+    echo "Quantidade de jobs rodando no Batch:"
+    aws batch list-jobs --job-queue your-job-queue-name --job-status RUNNING --query "jobSummaryList[*].jobId" --output text | wc -l
+}
+
+# Função para obter a quantidade de spot requests ativas
+get_spot_requests() {
+    echo "Quantidade de Spot Requests ativas:"
+    aws ec2 describe-spot-instance-requests --filters "Name=status-code,Values=active" --query "SpotInstanceRequests[*].SpotInstanceRequestId" --output text | wc -l
+}
+
+# Função para obter outras informações úteis
+get_other_info() {
+    echo "Informações adicionais:"
+
+    # Listar buckets do S3
+    echo "Buckets S3:"
+    aws s3 ls
+
+    # Listar instâncias EC2
+    echo "Instâncias EC2 rodando:"
+    aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --query "Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PublicIpAddress]" --output table
+
+    # Listar jobs no Batch
+    echo "Jobs rodando no Batch:"
+    aws batch list-jobs --job-queue your-job-queue-name --job-status RUNNING --query "jobSummaryList[*].[jobId,jobName,status]" --output table
+
+    # Listar spot requests
+    echo "Spot Requests ativas:"
+    aws ec2 describe-spot-instance-requests --filters "Name=status-code,Values=active" --query "SpotInstanceRequests[*].[SpotInstanceRequestId,InstanceId,State,Status.Code]" --output table
+}
+
+# Checar se a AWS CLI está instalada
+check_aws_cli
+
+# Obter informações
+get_ec2_instances
+get_s3_buckets
+get_batch_jobs
+get_spot_requests
+get_other_info
+

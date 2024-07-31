@@ -1,20 +1,12 @@
-#pc_las: True
-#max_concurrency: 16
-#verbose: True
-#time: True
-#dem-resolution: 0.25
-#feature_type: hahog
-#feature_quality: high
-#matcher_neighbors: 14
-#min_num_features: 16000
-#opensfm_processes: 8
-#pc_tile: True
-#notifications:
-#  - 'howard@hobu.co'
 #geonex v.1.0
 memory_allocation: 120000
 max_performance: true
 resize_to: 2048
+enable_parallel_processing: true
+batch_size: 1000
+retry_on_failure: true
+retry_count: 3
+thread_count: 32
 pc-quality: high
 pc-las: True
 pc-filter: True
