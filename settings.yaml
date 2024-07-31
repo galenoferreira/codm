@@ -1,13 +1,20 @@
 #geonex v.1.0
-resize_to: 2048
-start_with: 'resize'
-end_with: 'odm_postprocess'
-zip_results: True
-time: True
-pc-quality: 'high'
-sfm-algorithm: 'Incremental'
-optimize-disk-space: True
-pmvs_num_cores: 16 # by default this is set to $(nproc)
-texturing_skip_hole_filling: False
-dtm: True      # Use this tag to build a DTM (Digital Terrain Model
-dsm: True      # Use this tag to build a DSM (Digital Surface Model
+  2 resize_to: 2048
+  3 pc-quality: high
+  4 pc-las: True
+  5 pc-filter: True
+  6 pc-csv: True
+  7 orthopfoto-kmz: True
+  8 orthophoto-cutline: True
+  9 merge: 'all'
+ 10 start_with: 'resize'
+ 11 end_with: 'odm_postprocess'
+ 12 zip_results: True
+ 13 time: True
+ 14 pc-quality: 'high'
+ 15 sfm-algorithm: 'Incremental'
+ 16 optimize-disk-space: True
+ 17 pmvs_num_cores: 16 # by default this is set to $(nproc)
+ 18 texturing_skip_hole_filling: False
+ 19 dtm: True      # Use this tag to build a DTM (Digital Terrain Model
+ 20 dsm: True      # Use this tag to build a DSM (Digital Surface Model
