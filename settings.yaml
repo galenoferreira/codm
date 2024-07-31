@@ -1,3 +1,4 @@
+smrf_backup: true
 memory_allocation: 120000
 max_performance: true
 resize_to: 2048

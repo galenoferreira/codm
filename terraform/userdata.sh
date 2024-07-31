@@ -39,4 +39,6 @@ echo -e "$DOCKER_SETTINGS" > /etc/sysconfig/docker
 
 service docker restart
 
+# Instala o htop
+sudo yum install htop -y
 --==MYBOUNDARY==--\
