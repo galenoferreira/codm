@@ -26,6 +26,7 @@ resource "aws_batch_compute_environment" "batch-compute-environment" {
     type                        = "MANAGED"
     # add compute_resources
     compute_resources {
+        # atentar se a conta AWS possui limites aumentados para rodar máquinas com 8, 16, 32 e 64 processadores
         instance_type = [ "g4dn.4xlarge", "g4dn.8xlarge", "g5.4xlarge", "g5.8xlarge", "g6.4xlarge", "g6.8xlarge" ]
         subnets = [ for s in aws_subnet.worker-subnets: s.id ]
         type = "SPOT"
