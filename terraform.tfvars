@@ -1,4 +1,4 @@
 // Nome do ambiente
-prefix = "geonex-prod-codm"
+prefix = "geonex-prod"
 //deg: dev, qa, prod
 stage = "prod"
