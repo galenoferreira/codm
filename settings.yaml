@@ -1,17 +1,3 @@
-#pc_las: True
-#max_concurrency: 16
-#verbose: True
-#time: True
-#dem-resolution: 0.25
-#feature_type: hahog
-#feature_quality: high
-#matcher_neighbors: 14
-#min_num_features: 16000
-#opensfm_processes: 8
-#pc_tile: True
-#notifications:
-#  - 'howard@hobu.co'
-#geonex v.1.0
 memory_allocation: 120000
 max_performance: true
 resize_to: 2048
@@ -33,3 +19,7 @@ pmvs_num_cores: 16 # by default this is set to $(nproc)
 texturing_skip_hole_filling: False
 dtm: True      # Use this tag to build a DTM (Digital Terrain Model
 dsm: True      # Use this tag to build a DSM (Digital Surface Model
+pc_las: True
+verbose: True
+time: True
+pc_tile: True
