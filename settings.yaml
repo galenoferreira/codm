@@ -1,13 +1,18 @@
 smrf_backup: true
 memory_allocation: 120000
 max_performance: true
+
+# não usar por enquanto, afeta qualidade do orthomosaico quando zoom in
 resize_to: 2048
+
 pc-quality: high
 pc-las: True
 pc-filter: True
 pc-csv: True
+
 orthopfoto-kmz: True
 orthophoto-cutline: True
+
 merge: 'all'
 start_with: 'resize'
 end_with: 'odm_postprocess'
