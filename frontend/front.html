@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Image Upload</h1>
+    
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="images">Upload Images:</label>
+        <input type="file" id="images" name="images" accept=".jpg,.jpeg" multiple required>
+        <br>
+        <label for="test-images">Upload Test Images:</label>
+        <input type="file" id="test-images" name="test-images" accept=".jpg,.jpeg" multiple required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    
+    <script>
+        // Add JavaScript code here to handle the form submission and upload the images to AWS S3 bucket
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get the file inputs
+            var imageFiles = document.getElementById('images').files;
+            var testImageFiles = document.getElementById('test-images').files;
+            
+            // Create a FormData object to store the files
+            var formData = new FormData();
+            
+            // Append the image files to the FormData object
+            for (var i = 0; i < imageFiles.length; i++) {
+                formData.append('images', imageFiles[i]);
+            }
+            
+            // Append the test image files to the FormData object
+            for (var i = 0; i < testImageFiles.length; i++) {
+                formData.append('test-images', testImageFiles[i]);
+            }
+            
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+            
+            // Set up the request
+            xhr.open('POST', '/upload');
+            
+            // Set up the onload function
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Upload successful
+                    console.log('Images uploaded successfully');
+                } else {
+                    // Upload failed
+                    console.log('Error uploading images');
+                }
+            };
+            
+            // Send the request
+            xhr.send(formData);
+        });
+    </script>
+</body>
+</html>
