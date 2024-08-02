@@ -1,7 +1,3 @@
-smrf_backup: true
-memory_allocation: 120000
-max_performance: true
-
 # não usar por enquanto, afeta qualidade do orthomosaico quando zoom in
 resize_to: 2048
 
